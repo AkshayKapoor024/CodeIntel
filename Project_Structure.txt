@@ -1,0 +1,51 @@
+CodeIntel/
+│
+├── client/                      # 🎨 REACT + VITE FRONTEND (Modern Glassmorphism UI)
+│   ├── index.html               # Entry HTML with Outfit & Fira Code typography
+│   ├── package.json             # React 19, Framer Motion, Lucide icons, React Markdown
+│   ├── vite.config.js           # Vite build & dev server configuration
+│   └── src/
+│       ├── main.jsx             # React entry point
+│       ├── App.jsx              # Core navigation & layout state
+│       ├── api.js               # Typed client calling FastAPI endpoints
+│       ├── index.css            # Dark mode glassmorphism design system
+│       ├── context/
+│       │   └── AuthContext.jsx  # Session-based authentication context
+│       └── pages/
+│           ├── AuthPage.jsx         # Sign in & registration portal
+│           ├── DashboardPage.jsx    # Repository registry, status & metrics
+│           ├── AnalysisPage.jsx     # 7D Quality scores, directory tree & issues
+│           └── ChatPage.jsx         # AI chat with code citations & viewer
+│
+├── server/                      # ⚙️ FASTAPI + LANGGRAPH BACKEND
+│   ├── main.py                  # FastAPI server with CORS, Sessions & API routes
+│   ├── core/                    # --- Core Models & Config ---
+│   │   ├── llms.py              # OpenAI resilient fallback & structured output chains
+│   │   └── mongo.py             # MongoDB Atlas client (Users & Chat history)
+│   ├── database/                # --- Relational Storage ---
+│   │   └── sqlite_manager.py    # Repos, files, ASTs, deps & issues persistence
+│   ├── graph/                   # --- Unified LangGraph Engine ---
+│   │   ├── state.py             # Unified GraphState definition
+│   │   ├── router.py            # Deterministic mode routing (analyze vs chat)
+│   │   ├── graph.py             # Compiled StateGraph with persistent SqliteSaver
+│   │   └── nodes/
+│   │       ├── analysis/        # 12-Node repository inspection pipeline
+│   │       │   ├── repository.py    # URL validation, clone, synth & persist
+│   │       │   ├── inspection.py    # Tree builder & file classifier
+│   │       │   ├── parsing.py       # Python AST & JS/TS regex source parser
+│   │       │   ├── architecture.py  # Architectural pattern analyzer
+│   │       │   ├── quality.py       # Dependency mapper & 7D quality evaluator
+│   │       │   └── analysis.py      # File summaries & security issue detector
+│   │       └── chat/            # 7-Node conversational exploration pipeline
+│   │           ├── retrieval.py     # Context loading, file selector & retrieval
+│   │           └── chat.py          # Query classifier, code analyzer & response
+│   ├── services/
+│   │   └── github_service.py    # Git cloning & on-demand raw content fetching
+│   ├── tools/
+│   │   └── password_hashing.py  # Bcrypt security utilities
+│   ├── exception/               # Custom exception handler
+│   └── logger/                  # Unified logging
+│
+├── .env                         # Environment variables (Google AI, Groq, MongoDB)
+├── requirements.txt             # Python backend dependencies
+└── README.md                    # Complete project documentation
